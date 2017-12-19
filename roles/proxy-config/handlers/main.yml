@@ -1,0 +1,6 @@
+---
+# handlers file for proxy-config
+  - name: restart "{{PKG}}"
+    service:
+      name: "{{PKG}}"
+      state: restarted

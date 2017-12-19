@@ -1,0 +1,19 @@
+---
+# tasks file for proxy-config
+  - name: http
+    package:
+      name: httpie
+      state: latest
+  - name: install "{{PKG}}"
+    yum:
+      name: "{{PKG}}" 
+      state: latest
+  - name: enable "{{PKG}}"
+    service:
+      name: "{{PKG}}"
+      state: started
+  - name: configure haproxy
+    template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+    notify: restart "{{PKG}}"

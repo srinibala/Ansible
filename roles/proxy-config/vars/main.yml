@@ -1,0 +1,3 @@
+---
+# vars file for proxy-config
+PKG: haproxy

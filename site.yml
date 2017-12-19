@@ -1,0 +1,21 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  roles:
+   - base-config
+- hosts: frontends
+  gather_facts: false
+  become: true
+  roles:
+   - proxy-config
+- hosts: apps
+  gather_facts: false
+  become: true
+  roles:
+   - tomcat-config
+- hosts: appdbs
+  gather_facts: true
+  become: true
+  roles:
+   - geerlingguy.postgresql 
